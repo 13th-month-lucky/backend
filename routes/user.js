@@ -3,14 +3,14 @@ var router = express.Router();
 
 const User = require('../src/models/User');
 
-router.get('/', async function (req, res, next) {
+router.post('/find', async function (req, res, next) {
   const { nickname } = req.body;
   const result = await User.findOne({ nickname: nickname });
 
   res.send(result);
 });
 
-router.post('/', async function (req, res, next) {
+router.post('/create', async function (req, res, next) {
   const { nickname, profile_image_url } = req.body;
 
   const result = await User.create({
