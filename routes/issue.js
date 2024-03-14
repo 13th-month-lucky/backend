@@ -3,10 +3,10 @@ var router = express.Router();
 var axios = require('axios');
 const https = require('https');
 
-const HotIssue = require('../src/models/HotIssue');
+const Issue = require('../src/models/Issue');
 
 // get hot issue stocks with shinhan API, and update in MongoDB
-router.get('/update', async function (req, res, next) {
+router.post('/', async function (req, res, next) {
   try {
     var config = {
       method: 'get',
@@ -23,13 +23,15 @@ router.get('/update', async function (req, res, next) {
     const resp = await axios(config);
     const stocks = resp.data.dataBody;
 
-    await HotIssue.deleteMany({});
-    const result = await stocks.map((ele, idx) => {
-      HotIssue.create(ele);
-      return ele;
+    console.log('stocks: ', stocks);
+
+    await Issue.deleteMany({});
+
+    stocks.map((ele, idx) => {
+      Issue.create(ele);
     });
 
-    res.send(result);
+    res.send(stocks);
   } catch (err) {
     res.send(err);
   }

@@ -8,7 +8,9 @@ const cors = require('cors');
 const { connectDB } = require('./src/utils/db');
 
 var indexRouter = require('./routes/index');
-var userRouter = require('./routes/user');
+const userRouter = require('./routes/user');
+const issueRouter = require('./routes/issue');
+const risingRouter = require('./routes/rising');
 
 var app = express();
 
@@ -25,6 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/api/user', userRouter);
+app.use('/api/issue', issueRouter);
+app.use('/api/rising', risingRouter);
 
 connectDB();
 

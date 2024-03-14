@@ -6,7 +6,7 @@ const https = require('https');
 const Rising = require('../src/models/Rising');
 
 // get hot issue stocks with shinhan API, and update in MongoDB
-router.get('/update', async function (req, res, next) {
+router.post('/', async function (req, res, next) {
   try {
     var config = {
       method: 'get',
@@ -24,12 +24,12 @@ router.get('/update', async function (req, res, next) {
     const stocks = resp.data.dataBody.list;
 
     await Rising.deleteMany({});
-    const result = await stocks.map((ele, idx) => {
-      Rising.create(ele);
-      return ele;
+
+    stocks.map(async (ele, idx) => {
+      await Rising.create(ele);
     });
 
-    res.send(result);
+    res.send(stocks);
   } catch (err) {
     res.send(err);
   }
