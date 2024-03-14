@@ -3,10 +3,11 @@ var router = express.Router();
 
 const User = require('../src/models/User');
 
-router.get('/', function (req, res, next) {
+router.get('/', async function (req, res, next) {
   const { nickname } = req.body;
+  const result = await User.findOne({ nickname: nickname });
 
-  //찾기
+  res.send(result);
 });
 
 router.post('/', async function (req, res, next) {
