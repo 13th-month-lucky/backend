@@ -21,4 +21,11 @@ router.post('/', async function (req, res, next) {
   res.send(result);
 });
 
+router.delete('/', async function (req, res, next) {
+  const { nickname } = req.body;
+  const result = await User.findOneAndDelete({ nickname: nickname });
+
+  res.send(result);
+});
+
 module.exports = router;
