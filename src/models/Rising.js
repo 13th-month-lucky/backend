@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const stockSchema = new mongoose.Schema({
   dd_cmpr_rank: { type: Number },
@@ -9,5 +9,5 @@ const stockSchema = new mongoose.Schema({
   stock_code: { type: String },
 });
 
-const Stock = mongoose.model('Rising', stockSchema);
+const Stock = mongoose.model("Rising", stockSchema);
 module.exports = Stock;

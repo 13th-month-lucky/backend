@@ -1,17 +1,17 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var axios = require('axios');
-const https = require('https');
+var axios = require("axios");
+const https = require("https");
 
-const Rising = require('../src/models/Rising');
+const Rising = require("../src/models/Rising");
 
 // get hot issue stocks with shinhan API, and update in MongoDB
-router.post('/', async function (req, res, next) {
+router.post("/", async function (req, res, next) {
   try {
     var config = {
-      method: 'get',
+      method: "get",
       maxBodyLength: Infinity,
-      url: 'https://gapi.shinhansec.com:8443/openapi/v1.0/ranking/rising',
+      url: "https://gapi.shinhansec.com:8443/openapi/v1.0/ranking/rising",
       headers: {
         apiKey: process.env.SHINHAN_API_KEY,
       },

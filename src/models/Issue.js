@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const stockSchema = new mongoose.Schema({
   rank: { type: Number },
@@ -6,5 +6,5 @@ const stockSchema = new mongoose.Schema({
   stock_code: { type: String },
 });
 
-const Stock = mongoose.model('Issue', stockSchema);
+const Stock = mongoose.model("Issue", stockSchema);
 module.exports = Stock;
