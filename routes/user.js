@@ -16,11 +16,10 @@ router.post('/find', async function (req, res, next) {
 
 router.post('/create', async function (req, res, next) {
   try {
-    const { nickname, profile_image_url } = req.body;
+    const { nickname } = req.body;
 
     const result = await User.create({
       nickname: nickname,
-      profile_image_url: profile_image_url,
     });
 
     res.send(result);
