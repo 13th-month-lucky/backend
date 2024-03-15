@@ -1,9 +1,9 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-const User = require('../src/models/User');
+const User = require("../src/models/User");
 
-router.post('/find', async function (req, res, next) {
+router.post("/find", async function (req, res, next) {
   try {
     const { nickname } = req.body;
     const result = await User.findOne({ nickname: nickname });
@@ -14,13 +14,12 @@ router.post('/find', async function (req, res, next) {
   }
 });
 
-router.post('/create', async function (req, res, next) {
+router.post("/create", async function (req, res, next) {
   try {
-    const { nickname, profile_image_url } = req.body;
+    const { nickname } = req.body;
 
     const result = await User.create({
       nickname: nickname,
-      profile_image_url: profile_image_url,
     });
 
     res.send(result);
@@ -29,7 +28,7 @@ router.post('/create', async function (req, res, next) {
   }
 });
 
-router.delete('/', async function (req, res, next) {
+router.delete("/", async function (req, res, next) {
   try {
     const { nickname } = req.body;
     const result = await User.findOneAndDelete({ nickname: nickname });
