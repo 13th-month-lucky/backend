@@ -7,7 +7,9 @@ router.get("/:code", async function (req, res, next) {
   try {
     const code = req.params.code;
 
-    const result = await Comment.find({ code: code });
+    const result = await Comment.find({ code: code, depth: 0 }).populate(
+      "replyIds"
+    );
 
     res.send(result);
   } catch (err) {
