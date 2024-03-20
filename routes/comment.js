@@ -67,4 +67,20 @@ router.put("/like", async function (req, res, next) {
   }
 });
 
+router.put("/dislike", async function (req, res, next) {
+  try {
+    const { commentId, userId } = req.body;
+
+    const result = await Comment.findByIdAndUpdate(
+      commentId,
+      { $pull: { likeIds: userId } },
+      { new: true }
+    );
+
+    res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 module.exports = router;
