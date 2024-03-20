@@ -49,4 +49,20 @@ router.put("/reply", async function (req, res, next) {
   }
 });
 
+router.put("/like", async function (req, res, next) {
+  try {
+    const { commentId, userId } = req.body;
+
+    const result = await Comment.findByIdAndUpdate(
+      commentId,
+      { $push: { likeIds: userId } },
+      { new: true }
+    );
+
+    res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 module.exports = router;
