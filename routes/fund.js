@@ -26,4 +26,17 @@ router.get("/:fundCode", function (req, res, next) {
     });
 });
 
+// 펀드 코드로 기본 정보 조회
+router.get("/:fundCode/info", function (req, res, next) {
+  Fund.findOne({ code: req.params.fundCode })
+    .then((fund) => {
+      if (!fund)
+        return res.status(404).json({ message: "펀드를 찾을 수 없습니다." });
+      res.json(fund.data);
+    })
+    .catch((err) => {
+      return next(err);
+    });
+});
+
 module.exports = router;
