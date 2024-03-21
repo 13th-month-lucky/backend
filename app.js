@@ -12,6 +12,7 @@ const userRouter = require("./routes/user");
 const issueRouter = require("./routes/issue");
 const risingRouter = require("./routes/rising");
 const fundRouter = require("./routes/fund");
+const etfRouter = require("./routes/etf");
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use("/api/user", userRouter);
 app.use("/api/issue", issueRouter);
 app.use("/api/rising", risingRouter);
 app.use("/api/fund", fundRouter);
+app.use("/api/etf", etfRouter);
 
 connectDB();
 
