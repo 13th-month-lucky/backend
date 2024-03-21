@@ -41,10 +41,10 @@ router.delete("/", async function (req, res, next) {
 
 router.put("/like/etf", async function (req, res, next) {
   try {
-    const { userId, etfId } = req.body;
+    const { userId, code } = req.body;
     const result = await User.findByIdAndUpdate(
       userId,
-      { $push: { likedEtf: etfId } },
+      { $push: { likedEtf: code } },
       { new: true }
     );
 
@@ -56,10 +56,10 @@ router.put("/like/etf", async function (req, res, next) {
 
 router.put("/like/fund", async function (req, res, next) {
   try {
-    const { userId, etfId } = req.body;
+    const { userId, code } = req.body;
     const result = await User.findByIdAndUpdate(
       userId,
-      { $push: { likedFund: etfId } },
+      { $push: { likedFund: code } },
       { new: true }
     );
 
@@ -71,10 +71,10 @@ router.put("/like/fund", async function (req, res, next) {
 
 router.put("/dislike/etf", async function (req, res, next) {
   try {
-    const { userId, etfId } = req.body;
+    const { userId, code } = req.body;
     const result = await User.findByIdAndUpdate(
       userId,
-      { $pull: { likedEtf: etfId } },
+      { $pull: { likedEtf: code } },
       { new: true }
     );
 
@@ -86,10 +86,10 @@ router.put("/dislike/etf", async function (req, res, next) {
 
 router.put("/dislike/fund", async function (req, res, next) {
   try {
-    const { userId, etfId } = req.body;
+    const { userId, code } = req.body;
     const result = await User.findByIdAndUpdate(
       userId,
-      { $pull: { likedFund: etfId } },
+      { $pull: { likedFund: code } },
       { new: true }
     );
 
