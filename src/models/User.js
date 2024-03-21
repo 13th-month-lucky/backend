@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
   nickname: { type: String },
   resultArray: [{ type: Number }],
-  likedEtf: [],
-  likedFund: [],
+  likedEtf: [{ type: mongoose.Types.ObjectId, ref: "EtfInfo" }],
+  likedFund: [{ type: mongoose.Types.ObjectId, ref: "Fund" }],
 });
 
 const User = mongoose.model("User", userSchema);
