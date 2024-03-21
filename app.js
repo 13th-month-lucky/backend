@@ -11,6 +11,7 @@ var indexRouter = require("./routes/index");
 const userRouter = require("./routes/user");
 const issueRouter = require("./routes/issue");
 const risingRouter = require("./routes/rising");
+const fundRouter = require("./routes/fund");
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use("/", indexRouter);
 app.use("/api/user", userRouter);
 app.use("/api/issue", issueRouter);
 app.use("/api/rising", risingRouter);
+app.use("/api/fund", fundRouter);
 
 connectDB();
 
