@@ -7,7 +7,7 @@ const EtfChart = require("../src/models/EtfChart");
 const EtfInfo = require("../src/models/EtfInfo");
 
 //etf 종목의 정보 하나만 조회 - public
-router.get("/info/:stockCode", function (req, res, next) {
+router.get(":stockCode/info", function (req, res, next) {
   const stockCode = req.params.stockCode;
 
   EtfInfo.find({ code: stockCode })
@@ -20,7 +20,7 @@ router.get("/info/:stockCode", function (req, res, next) {
 });
 
 //etfChart 하나만 조회
-router.get("/chart/:stockCode", function (req, res, next) {
+router.get("/:stockCode/chart", function (req, res, next) {
   const stockCode = req.params.stockCode;
 
   EtfChart.find({ code: stockCode })
