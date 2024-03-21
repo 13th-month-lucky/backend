@@ -35,6 +35,18 @@ router.post("/", async function (req, res, next) {
   }
 });
 
+router.delete("/:commentId", async function (req, res, next) {
+  try {
+    const commentId = req.params.commentId;
+
+    const result = await Comment.findByIdAndDelete(commentId);
+
+    res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 router.put("/reply", async function (req, res, next) {
   try {
     const { commentId, replyId } = req.body;
