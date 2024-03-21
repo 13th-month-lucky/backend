@@ -5,8 +5,8 @@ var router = express.Router();
 // 모든 펀드 조회
 router.get("/", function (req, res, next) {
   Fund.find()
-    .then((data) => {
-      res.json(data);
+    .then((fund) => {
+      res.json(fund);
     })
     .catch((err) => {
       return next(err);
@@ -16,10 +16,10 @@ router.get("/", function (req, res, next) {
 // 펀드 코드로 조회
 router.get("/:fundCode", function (req, res, next) {
   Fund.findOne({ code: req.params.fundCode })
-    .then((data) => {
-      if (!data)
+    .then((fund) => {
+      if (!fund)
         return res.status(404).json({ message: "펀드를 찾을 수 없습니다." });
-      res.json(data);
+      res.json(fund);
     })
     .catch((err) => {
       return next(err);
