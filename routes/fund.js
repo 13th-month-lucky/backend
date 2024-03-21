@@ -64,4 +64,17 @@ router.get("/:fundCode/profit", function (req, res, next) {
       return next(err);
     });
 });
+
+// 펀드 코드로 기준 가격 조회
+router.get("/:fundCode/base-price", function (req, res, next) {
+  Fund.findOne({ code: req.params.fundCode })
+    .then((fund) => {
+      if (!fund)
+        return res.status(404).json({ message: "펀드를 찾을 수 없습니다." });
+      res.json(fund.basePrice);
+    })
+    .catch((err) => {
+      return next(err);
+    });
+});
 module.exports = router;
