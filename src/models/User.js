@@ -4,8 +4,8 @@ const userSchema = new mongoose.Schema({
   nickname: { type: String },
   myData: { type: Object },
   resultArray: [{ type: Number }],
-  likedEtf: [],
-  likedFund: [],
+  likedEtf: [{ type: String }],
+  likedFund: [{ type: String }],
 });
 
 const User = mongoose.model("User", userSchema);
