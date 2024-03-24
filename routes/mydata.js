@@ -33,13 +33,19 @@ router.post("/create", async function (req, res, next) {
 
     assignRandomValues(obj);
 
+    const user = await User.findById(userId);
+    if (user.myData) {
+      const myDataResp = await MyData.findByIdAndDelete(user.myData);
+      console.log("resp: ", myDataResp);
+    }
+
     const myDataResult = await MyData.create(obj);
 
-    const userResult = await User.findByIdAndUpdate(userId, {
+    await User.findByIdAndUpdate(userId, {
       myData: myDataResult._id,
     });
 
-    res.send({ myDataResult, userResult });
+    res.send({ myDataResult });
   } catch (err) {
     res.send(err);
   }
