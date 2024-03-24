@@ -1,0 +1,58 @@
+{
+  "card": {
+    "credit": {
+      "amount": 130000
+    },
+    "check": {
+      "amount": 130000
+    }
+  },
+
+  "nationalTexService": {
+    "cash": {
+      "amount": 1300000
+    },
+    "etc": {
+      "culture": 10000,
+      "health": 10000,
+      "education": 10000000,
+      "donation": 10000,
+      "publicTransPortation": 1000,
+      "traditionalMarket": 1000
+    }
+  },
+
+  "bank": {
+    "hasHousingDeposit": true,
+    "housingDeposit": 100000,
+
+    "hasTimeDeposit": true,
+    "timeDeposit": 10000,
+
+    "hasHousingDept": true,
+    "housingDeptRepayment": 100000
+  },
+
+  "governmentAgency": {
+    "pensionService": 10000,
+    "healthInsurance": 1000,
+    "employmentInsurance": 100
+  },
+
+  "securities": {
+    "hasISA": true,
+    "ISADeposit": 13000,
+
+    "hasIRP": true,
+    "IRPDeposit": 10000,
+
+    "hasPension": true,
+    "pensionDeposit": 13000,
+
+    "hasAccount": true,
+    "accountDeposit": 13000
+  },
+  "insurance": {
+    "insurance": 10000
+  }
+}
