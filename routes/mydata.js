@@ -2,7 +2,10 @@ var express = require("express");
 var router = express.Router();
 
 const fs = require("fs");
-const MyData = require("../src/models/MyData.json");
+const MyDataJsonFile = require("../src/models/MyData.json");
+
+const MyData = require("../src/models/MyData");
+const User = require("../src/models/User");
 
 const MIN_COST = 10000;
 const MAX_COST = 10000000;
@@ -22,12 +25,21 @@ function assignRandomValues(obj) {
   }
 }
 
-router.get("/", function (req, res, next) {
+router.post("/", async function (req, res, next) {
   try {
-    let obj = JSON.parse(JSON.stringify(MyData));
+    const { userId } = req.body;
+
+    let obj = JSON.parse(JSON.stringify(MyDataJsonFile));
 
     assignRandomValues(obj);
-    res.send(obj);
+
+    const myDataResult = await MyData.create(obj);
+
+    const userResult = await User.findByIdAndUpdate(userId, {
+      myData: myDataResult._id,
+    });
+
+    res.send({ myDataResult, userResult });
   } catch (err) {
     res.send(err);
   }
