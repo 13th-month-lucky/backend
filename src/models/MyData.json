@@ -8,7 +8,8 @@
     }
   },
 
-  "nationalTexService": {
+  "nationalTaxService": {
+    "taxBase": 10000000,
     "cash": {
       "amount": 1300000
     },

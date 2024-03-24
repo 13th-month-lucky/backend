@@ -25,7 +25,7 @@ function assignRandomValues(obj) {
   }
 }
 
-router.post("/", async function (req, res, next) {
+router.post("/create", async function (req, res, next) {
   try {
     const { userId } = req.body;
 
@@ -40,6 +40,19 @@ router.post("/", async function (req, res, next) {
     });
 
     res.send({ myDataResult, userResult });
+  } catch (err) {
+    res.send(err);
+  }
+});
+
+router.post("/", async function (req, res, next) {
+  try {
+    const { userId } = req.body;
+
+    const userResult = await User.findOne({ _id: userId });
+    const myDataResult = await MyData.findOne({ _id: userResult.myData });
+
+    res.send({ myDataResult });
   } catch (err) {
     res.send(err);
   }
