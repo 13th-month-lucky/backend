@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
   nickname: { type: String },
-  myData: { type: Object },
+  myData: { type: mongoose.Types.ObjectId, ref: "MyData" },
   resultArray: [{ type: Number }],
   likedEtf: [{ type: String }],
   likedFund: [{ type: String }],
