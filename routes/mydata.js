@@ -22,7 +22,7 @@ function assignRandomValues(obj) {
     } else if (typeof obj[key] === "number") {
       if (key === "taxPaidRate") {
         const taxPaidRate = Math.random() * (MAX_RATE - MIN_RATE) + MIN_RATE;
-        obj[key] = taxPaidRate;
+        obj[key] = parseFloat(taxPaidRate.toFixed(2));
         console.log("rate: ", taxPaidRate);
       } else {
         obj[key] =
