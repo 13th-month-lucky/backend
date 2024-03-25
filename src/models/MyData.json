@@ -10,7 +10,6 @@
 
   "nationalTaxService": {
     "taxBaseMonth": 10000000,
-    "taxPaidRate": 1000,
     "cash": {
       "amount": 1300000
     },
