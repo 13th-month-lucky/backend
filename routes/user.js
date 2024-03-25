@@ -8,9 +8,14 @@ router.post("/find", async function (req, res, next) {
     const { nickname } = req.body;
     const result = await User.findOne({ nickname: nickname });
 
-    res.send(result);
+    if (!result) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    return res.status(200).json(result);
   } catch (err) {
-    res.send(err);
+    console.error("Error finding user:", err);
+    return res.status(500).json({ error: "Internal server error" });
   }
 });
 
@@ -47,6 +52,24 @@ router.put("/like/etf", async function (req, res, next) {
       { $push: { likedEtf: code } },
       { new: true }
     );
+
+    res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
+router.put("/info", async function (req, res, next) {
+  try {
+    const { userId, birthday, email, salary, address } = req.body;
+
+    const result = await User.findByIdAndUpdate(userId, {
+      email: email,
+      birthday: birthday,
+      salary: salary,
+      address: address,
+    });
+    console.log(result);
 
     res.send(result);
   } catch (err) {
