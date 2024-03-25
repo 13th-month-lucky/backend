@@ -35,17 +35,16 @@ router.post("/create", async function (req, res, next) {
 
     const user = await User.findById(userId);
     if (user.myData) {
-      const myDataResp = await MyData.findByIdAndDelete(user.myData);
-      console.log("resp: ", myDataResp);
+      await MyData.findByIdAndDelete(user.myData);
     }
 
-    const myDataResult = await MyData.create(obj);
+    const createdMyData = await MyData.create(obj);
 
-    await User.findByIdAndUpdate(userId, {
-      myData: myDataResult._id,
+    const updatedUser = await User.findByIdAndUpdate(userId, {
+      myData: createdMyData._id,
     });
 
-    res.send({ myDataResult });
+    res.send({ updatedUser, createdMyData });
   } catch (err) {
     res.send(err);
   }
@@ -58,7 +57,7 @@ router.post("/", async function (req, res, next) {
     const userResult = await User.findOne({ _id: userId });
     const myDataResult = await MyData.findOne({ _id: userResult.myData });
 
-    res.send({ myDataResult });
+    res.send(myDataResult);
   } catch (err) {
     res.send(err);
   }
