@@ -10,9 +10,6 @@ const User = require("../src/models/User");
 const MIN_COST = 10000;
 const MAX_COST = 9000000;
 
-const MIN_SALARY = 1000000;
-const MAX_SALARY = 10000000;
-
 function assignRandomValues(obj) {
   for (let key in obj) {
     if (typeof obj[key] === "object") {
@@ -20,17 +17,10 @@ function assignRandomValues(obj) {
     } else if (typeof obj[key] === "boolean") {
       obj[key] = Math.random() < 0.5 ? true : false;
     } else if (typeof obj[key] === "number") {
-      if (key === "taxBaseMonth") {
-        obj[key] =
-          Math.floor(
-            (Math.random() * (MAX_SALARY - MIN_SALARY + 1) + MIN_SALARY) / 100
-          ) * 100;
-      } else {
-        obj[key] =
-          Math.floor(
-            (Math.random() * (MAX_COST - MIN_COST + 1) + MIN_COST) / 100
-          ) * 100;
-      }
+      obj[key] =
+        Math.floor(
+          (Math.random() * (MAX_COST - MIN_COST + 1) + MIN_COST) / 100
+        ) * 100;
     }
   }
 }
