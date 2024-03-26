@@ -8,9 +8,9 @@ router.post("/find", async function (req, res, next) {
     const { nickname } = req.body;
     const result = await User.findOne({ nickname: nickname });
 
-    if (!result) {
-      return res.status(404).json({ error: "User not found" });
-    }
+    // if (!result) {
+    //   return res.status(404).json({ error: "User not found" });
+    // }
 
     return res.status(200).json(result);
   } catch (err) {
