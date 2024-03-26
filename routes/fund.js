@@ -39,6 +39,19 @@ router.get("/:fundCode/info", function (req, res, next) {
     });
 });
 
+// 펀드 코드 리스트로 기본 정보 조회
+router.post("/info", function (req, res, next) {
+  Fund.find({ code: { $in: req.body.fundCodeList } })
+    .then((fund) => {
+      if (!fund)
+        return res.status(404).json({ message: "펀드를 찾을 수 없습니다." });
+      res.json(fund);
+    })
+    .catch((err) => {
+      return next(err);
+    });
+});
+
 // 펀드 코드로 포트폴리오 조회
 router.get("/:fundCode/portfolio", function (req, res, next) {
   Fund.findOne({ code: req.params.fundCode })
