@@ -6,6 +6,10 @@ const userSchema = new mongoose.Schema({
   resultArray: [{ type: Number }],
   likedEtf: [{ type: String }],
   likedFund: [{ type: String }],
+  birthday: { type: String },
+  email: { type: String },
+  salary: { type: Number },
+  address: { type: Number },
 });
 
 const User = mongoose.model("User", userSchema);
