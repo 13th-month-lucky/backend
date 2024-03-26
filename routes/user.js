@@ -47,21 +47,8 @@ router.put("/like/etf", async function (req, res, next) {
       { $push: { likedEtf: code } },
       { new: true }
     );
-
-    res.send(result);
-  } catch (err) {
-    res.send(err);
-  }
-});
-
-router.put("/like/fund", async function (req, res, next) {
-  try {
-    const { userId, code } = req.body;
-    const result = await User.findByIdAndUpdate(
-      userId,
-      { $push: { likedFund: code } },
-      { new: true }
-    );
+    console.log(userId);
+    console.log(result);
 
     res.send(result);
   } catch (err) {
@@ -75,6 +62,21 @@ router.put("/dislike/etf", async function (req, res, next) {
     const result = await User.findByIdAndUpdate(
       userId,
       { $pull: { likedEtf: code } },
+      { new: true }
+    );
+
+    res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
+router.put("/like/fund", async function (req, res, next) {
+  try {
+    const { userId, code } = req.body;
+    const result = await User.findByIdAndUpdate(
+      userId,
+      { $push: { likedFund: code } },
       { new: true }
     );
 
