@@ -6,10 +6,11 @@ const userSchema = new mongoose.Schema({
   resultArray: [{ type: Number }],
   likedEtf: [{ type: String }],
   likedFund: [{ type: String }],
-  birthday: { type: String },
-  email: { type: String },
-  salary: { type: Number },
-  address: { type: Number },
+  birthday: { type: String, default: null },
+  email: { type: String, default: null },
+  salary: { type: Number, default: null },
+  address: { type: String, default: null },
+  addressDetail: { type: String, default: null },
 });
 
 const User = mongoose.model("User", userSchema);

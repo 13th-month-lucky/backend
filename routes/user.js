@@ -28,6 +28,26 @@ router.post("/create", async function (req, res, next) {
   }
 });
 
+router.put("/info", async function (req, res, next) {
+  try {
+    const { userId, birthday, email, salary, address, addressDetail } =
+      req.body;
+    console.log(req.body);
+    const result = await User.findByIdAndUpdate(userId, {
+      email: email,
+      birthday: birthday,
+      salary: salary,
+      address: address,
+      addressDetail: addressDetail,
+    });
+    console.log(result);
+
+    res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 router.delete("/", async function (req, res, next) {
   try {
     const { nickname } = req.body;
@@ -47,21 +67,8 @@ router.put("/like/etf", async function (req, res, next) {
       { $push: { likedEtf: code } },
       { new: true }
     );
-
-    res.send(result);
-  } catch (err) {
-    res.send(err);
-  }
-});
-
-router.put("/like/fund", async function (req, res, next) {
-  try {
-    const { userId, code } = req.body;
-    const result = await User.findByIdAndUpdate(
-      userId,
-      { $push: { likedFund: code } },
-      { new: true }
-    );
+    console.log(userId);
+    console.log(result);
 
     res.send(result);
   } catch (err) {
@@ -75,6 +82,21 @@ router.put("/dislike/etf", async function (req, res, next) {
     const result = await User.findByIdAndUpdate(
       userId,
       { $pull: { likedEtf: code } },
+      { new: true }
+    );
+
+    res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
+router.put("/like/fund", async function (req, res, next) {
+  try {
+    const { userId, code } = req.body;
+    const result = await User.findByIdAndUpdate(
+      userId,
+      { $push: { likedFund: code } },
       { new: true }
     );
 
