@@ -30,13 +30,15 @@ router.post("/create", async function (req, res, next) {
 
 router.put("/info", async function (req, res, next) {
   try {
-    const { userId, birthday, email, salary, address } = req.body;
-
+    const { userId, birthday, email, salary, address, addressDetail } =
+      req.body;
+    console.log(req.body);
     const result = await User.findByIdAndUpdate(userId, {
       email: email,
       birthday: birthday,
       salary: salary,
       address: address,
+      addressDetail: addressDetail,
     });
     console.log(result);
 

@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema({
   birthday: { type: String, default: null },
   email: { type: String, default: null },
   salary: { type: Number, default: null },
-  address: { type: Number, default: null },
+  address: { type: String, default: null },
+  addressDetail: { type: String, default: null },
 });
 
 const User = mongoose.model("User", userSchema);
