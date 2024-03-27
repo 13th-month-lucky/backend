@@ -35,4 +35,14 @@ router.post("/", async function (req, res, next) {
   }
 });
 
+router.get("/", async function (req, res, next) {
+  try {
+    const resp = await Rising.find({});
+
+    res.send(resp);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 module.exports = router;
