@@ -28,6 +28,24 @@ router.post("/create", async function (req, res, next) {
   }
 });
 
+router.put("/info", async function (req, res, next) {
+  try {
+    const { userId, birthday, email, salary, address } = req.body;
+
+    const result = await User.findByIdAndUpdate(userId, {
+      email: email,
+      birthday: birthday,
+      salary: salary,
+      address: address,
+    });
+    console.log(result);
+
+    res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 router.delete("/", async function (req, res, next) {
   try {
     const { nickname } = req.body;
