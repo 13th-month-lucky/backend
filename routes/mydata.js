@@ -31,7 +31,7 @@ router.post("/create", async function (req, res, next) {
     const { userId } = req.body;
 
     let obj = JSON.parse(JSON.stringify(MyDataJsonFile));
-    assignRandomValues(obj);
+    // assignRandomValues(obj);
 
     console.log("obj: ");
 
