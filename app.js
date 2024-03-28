@@ -15,6 +15,7 @@ const commentRouter = require("./routes/comment");
 const fundRouter = require("./routes/fund");
 const etfRouter = require("./routes/etf");
 const mydataRouter = require("./routes/mydata");
+const quizRouter = require("./routes/quiz");
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use("/api/comment", commentRouter);
 app.use("/api/fund", fundRouter);
 app.use("/api/etf", etfRouter);
 app.use("/api/mydata", mydataRouter);
+app.use("/api/quiz", quizRouter);
 
 connectDB();
 
