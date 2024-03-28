@@ -5,7 +5,7 @@ const https = require("https");
 
 const EtfChart = require("../src/models/EtfChart");
 const EtfInfo = require("../src/models/EtfInfo");
-const EtfOverView = require("../src/models/EtfOverview");
+const EtfOverView = require("../src/models/EtfOverView");
 
 //etf 종목의 정보 하나만 조회 - public
 router.get("/:stockCode/info", function (req, res, next) {
