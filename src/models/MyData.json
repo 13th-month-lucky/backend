@@ -1,58 +1,32 @@
 {
-  "card": {
-    "credit": {
-      "amount": 130000
-    },
-    "check": {
-      "amount": 130000
-    }
+  "카드": {
+    "신용카드": 6000000,
+    "체크카드": 3000000,
+    "현금영수증": 500000,
+    "대중교통비": 300000,
+    "전통시장비": 130000,
+    "문화생활비": 300000,
+    "의료비": 100000,
+    "교육비": 1000000
   },
-
-  "nationalTaxService": {
-    "cash": {
-      "amount": 1300000
-    },
-    "etc": {
-      "culture": 10000,
-      "health": 10000,
-      "education": 10000000,
-      "donation": 10000,
-      "publicTransPortation": 1000,
-      "traditionalMarket": 1000
-    }
+  "남은돈": 500000,
+  "주택": {
+    "주택청약납입액": 1200000,
+    "전세원리금상환액": 1000000,
+    "주택장기대출원리금상환액": null
   },
-
-  "bank": {
-    "hasHousingDeposit": true,
-    "housingDeposit": 100000,
-
-    "hasTimeDeposit": true,
-    "timeDeposit": 10000,
-
-    "hasHousingDept": true,
-    "housingDeptRepayment": 100000
+  "연금저축": {
+    "계좌유무": true,
+    "납입액": 700000
   },
-
-  "governmentAgency": {
-    "pensionService": 10000,
-    "healthInsurance": 1000,
-    "employmentInsurance": 100
+  "IRP": {
+    "계좌유무": false,
+    "납입액": null
   },
-
-  "securities": {
-    "hasISA": true,
-    "ISADeposit": 13000,
-
-    "hasIRP": true,
-    "IRPDeposit": 10000,
-
-    "hasPension": true,
-    "pensionDeposit": 13000,
-
-    "hasAccount": true,
-    "accountDeposit": 13000
+  "보험": {
+    "4대보험": 400000,
+    "보험료": 240000
   },
-  "insurance": {
-    "insurance": 10000
-  }
+  "기부금": 20000,
+  "낸세금": null
 }
