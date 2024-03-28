@@ -17,6 +17,7 @@ const etfRouter = require("./routes/etf");
 const mydataRouter = require("./routes/mydata");
 const quizRouter = require("./routes/quiz");
 const tipRouter = require("./routes/tip");
+const resultRouter = require("./routes/result");
 const kospiRouter = require("./routes/kospi");
 
 var app = express();
@@ -42,6 +43,7 @@ app.use("/api/etf", etfRouter);
 app.use("/api/mydata", mydataRouter);
 app.use("/api/quiz", quizRouter);
 app.use("/api/tip", tipRouter);
+app.use("/api/result", resultRouter);
 app.use("/api/kospi", kospiRouter);
 
 connectDB();
