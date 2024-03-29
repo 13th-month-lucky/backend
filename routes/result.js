@@ -31,6 +31,19 @@ router.post("/user/:userId", async function (req, res, next) {
   }
 });
 
+// 특정 연말정산 결과 조회
+router.put("/:resultId", async function (req, res, next) {
+  try {
+    const { resultId } = req.params;
+    const { data } = req.body;
+
+    const result = await Result.findById(resultId);
+    res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 // 연말정산 결과 업데이트
 router.put("/:resultId", async function (req, res, next) {
   try {
