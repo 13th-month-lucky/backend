@@ -81,4 +81,22 @@ router.get("/:stockCode/overview", function (req, res, next) {
     });
 });
 
+//etf종목코드 + etf이름 조회 => 뉴스 기사
+router.get("/news", function (req, res, next) {
+  EtfChart.find()
+    .then((etf) => {
+      const result = etf.map((element, index) => {
+        return {
+          code: element.code,
+          name: element.chart.output1.hts_kor_isnm,
+        };
+      });
+      // console.log(result);
+      res.json(result);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 module.exports = router;
