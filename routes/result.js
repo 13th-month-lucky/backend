@@ -4,7 +4,7 @@ var router = express.Router();
 const Result = require("../src/models/Result");
 
 // user의 연말정산결과 모두 조회
-router.get("/:userId", async function (req, res, next) {
+router.get("/user/:userId", async function (req, res, next) {
   try {
     const { userId } = req.params;
     const result = await Result.find({ userId: userId });
@@ -14,8 +14,8 @@ router.get("/:userId", async function (req, res, next) {
   }
 });
 
-// user의 연말정산 결과 추가
-router.post("/:userId", async function (req, res, next) {
+// user의 연말정산 결과 생성
+router.post("/user/:userId", async function (req, res, next) {
   try {
     const { userId } = req.params;
     const { data } = req.body;
