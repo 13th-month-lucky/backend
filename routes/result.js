@@ -31,16 +31,25 @@ router.post("/:userId", async function (req, res, next) {
   }
 });
 
-// 연말정산 결과 수정
+// 연말정산 결과 업데이트
 router.put("/:resultId", async function (req, res, next) {
   try {
     const { resultId } = req.params;
     const { data } = req.body;
-    const result = await Result.findByIdAndUpdate(
-      resultId,
-      { data },
-      { new: true }
-    );
+
+    let result;
+    await Result.findById(resultId).then(async (r) => {
+      const newData = {
+        ...r.data,
+        ...data,
+      };
+
+      result = await Result.updateOne(
+        { _id: resultId },
+        { data: newData },
+        { new: true }
+      );
+    });
 
     res.send(result);
   } catch (err) {
