@@ -13,6 +13,25 @@ router.get("/", function (req, res, next) {
     });
 });
 
+// 뉴스 크롤링 위한 [코드, 종목] 배열
+router.get("/news", function (req, res, next) {
+  let result = [];
+  Fund.find()
+    .then((funds) => {
+      for (fund of funds) {
+        let arr = {
+          code: fund.code,
+          name: fund.portfolio["보유종목 Top10"][0][0],
+        };
+        result.push(arr);
+      }
+      res.send(result);
+    })
+    .catch((err) => {
+      return next(err);
+    });
+});
+
 // 펀드 코드로 조회
 router.get("/:fundCode", function (req, res, next) {
   Fund.findOne({ code: req.params.fundCode })
@@ -90,4 +109,5 @@ router.get("/:fundCode/base-price", function (req, res, next) {
       return next(err);
     });
 });
+
 module.exports = router;
