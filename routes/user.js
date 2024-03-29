@@ -30,7 +30,8 @@ router.post("/create", async function (req, res, next) {
 
 router.put("/info", async function (req, res, next) {
   try {
-    const { userId, birthday, email, salary, home, earnedIncome } = req.body;
+    const { userId, birthday, email, salary, home, earnedIncome, age } =
+      req.body;
     console.log(req.body);
     const result = await User.findByIdAndUpdate(
       userId,
@@ -40,6 +41,7 @@ router.put("/info", async function (req, res, next) {
         salary: salary,
         home: home,
         earnedIncome: earnedIncome,
+        age: age,
       },
       { new: true }
     );
