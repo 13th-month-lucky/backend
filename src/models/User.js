@@ -8,7 +8,10 @@ const userSchema = new mongoose.Schema({
   likedFund: [{ type: String }],
   birthday: { type: String, default: null },
   age: { type: Number, default: null },
-  home: { type: Object, default: { address: "", size: 4, monthlyRent: null } }, // 집 주소, 크기, 월세
+  home: {
+    type: Object,
+    default: { address: null, size: 4, monthlyRent: null },
+  }, // 집 주소, 크기, 월세
   earnedIncome: { type: Number, default: null }, // 근로 소득 금랙
   email: { type: String, default: null },
   salary: { type: Number, default: null },
