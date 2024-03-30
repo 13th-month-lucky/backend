@@ -7,7 +7,9 @@ const Result = require("../src/models/Result");
 router.get("/user/:userId", async function (req, res, next) {
   try {
     const { userId } = req.params;
-    const result = await Result.find({ userId: userId });
+    const result = await Result.find({ userId: userId }).sort({
+      createdDate: -1,
+    });
     res.send(result);
   } catch (err) {
     res.send(err);
