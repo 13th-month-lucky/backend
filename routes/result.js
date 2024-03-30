@@ -32,10 +32,9 @@ router.post("/user/:userId", async function (req, res, next) {
 });
 
 // 특정 연말정산 결과 조회
-router.put("/:resultId", async function (req, res, next) {
+router.get("/:resultId", async function (req, res, next) {
   try {
     const { resultId } = req.params;
-    const { data } = req.body;
 
     const result = await Result.findById(resultId);
     res.send(result);
