@@ -7,8 +7,8 @@ const MyDataJsonFile = require("../src/models/MyData.json");
 const MyData = require("../src/models/MyData");
 const User = require("../src/models/User");
 
-const MIN_COST = 10000;
-const MAX_COST = 9000000;
+const MAX_DIFF = 200000;
+const UNIT = 1000;
 
 function assignRandomValues(obj) {
   for (let key in obj) {
@@ -17,10 +17,10 @@ function assignRandomValues(obj) {
     } else if (typeof obj[key] === "boolean") {
       obj[key] = Math.random() < 0.5 ? true : false;
     } else if (typeof obj[key] === "number") {
-      obj[key] =
-        Math.floor(
-          (Math.random() * (MAX_COST - MIN_COST + 1) + MIN_COST) / 100
-        ) * 100;
+      const randomIncrement =
+        Math.floor((Math.random() * (MAX_DIFF * 2 + 1) - MAX_DIFF) / UNIT) *
+        UNIT;
+      obj[key] += randomIncrement;
     }
   }
 }
@@ -31,9 +31,7 @@ router.post("/create", async function (req, res, next) {
     const { userId } = req.body;
 
     let obj = JSON.parse(JSON.stringify(MyDataJsonFile));
-    // assignRandomValues(obj);
-
-    console.log("obj: ");
+    assignRandomValues(obj);
 
     const user = await User.findById(userId);
     if (user.myData) {
