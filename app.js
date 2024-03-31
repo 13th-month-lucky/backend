@@ -19,6 +19,7 @@ const quizRouter = require("./routes/quiz");
 const tipRouter = require("./routes/tip");
 const resultRouter = require("./routes/result");
 const kospiRouter = require("./routes/kospi");
+const etfNewsRouter = require("./routes/etfNews");
 
 var app = express();
 
@@ -45,6 +46,7 @@ app.use("/api/quiz", quizRouter);
 app.use("/api/tip", tipRouter);
 app.use("/api/result", resultRouter);
 app.use("/api/kospi", kospiRouter);
+app.use("/api/etfnews", etfNewsRouter);
 
 connectDB();
 
